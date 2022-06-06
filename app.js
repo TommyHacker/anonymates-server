@@ -1,37 +1,22 @@
 const express = require('express');
 const app = express();
-const articles_route = require('./articles_routes/articles');
 const cors = require('cors');
-
-app.use(cors());
+const articleRoutes = require('./routes/articleRoutes');
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
+app.use(cors());
 
-// const get_gif = async (wSearch)=>{
+// app.use((req, res, next) => {
+// 	console.log(req.url);
+// 	console.log(req.method);
+// 	next();
+// });
 
-//     const api_key = 'grfrX5zkJtN2lUpb0RLNRAN1c82Me0Qc'
-//     let searQ = wSearch.trim()
-//     const api_url = `http://api.giphy.com/v1/gifs/search?q=${searQ}&api_key=${api_key}&limit=1`
-
-//     const resp = await fetch(api_url)
-//     const api_data = await resp.json()
-//     const {data} = api_data
-
-//     console.log(data[0].images.original.url);
-//     // .images.original.url
-// }
-
-//localhost:PORT
 app.get('/', (req, res) => {
-	res.send('/ page loaded');
-	// res.send(get_gif('dragon'))
+	res.send('home route');
 });
 
-//localhost:PORT/articles
-app.use('/articles', articles_route);
-
-//localhost:PORT/articles/:id
+app.use('/articles', articleRoutes);
 
 module.exports = app;

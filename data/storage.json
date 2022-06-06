@@ -1,28 +1,100 @@
 {
-	"articles": [
-		{
-			"id": 1,
-			"title": "this is the first ever post",
-			"body": "this is the first ever posts body",
-			"likes": 0,
-			"comments": [
-				{
-					"text": "this is the comment text",
-					"giphyUrl": "this is the giphy url."
-				}
-			]
-		},
-		{
-			"id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
-			"title": "second article title",
-			"body": "this is the body",
-			"likes": 9,
-			"comments": [
-				{
-					"text": "this is the comment",
-					"giphyUrl": "url.com"
-				}
-			]
-		}
-	]
+  "articles": [
+    {
+      "id": 1,
+      "title": "this is the first ever post",
+      "body": "this is the first ever posts body",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "this is the comment text",
+          "giphyUrl": "this is the giphy url."
+        }
+      ]
+    },
+    {
+      "id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
+      "title": "second article title",
+      "body": "this is the body",
+      "likes": 9,
+      "comments": [
+        {
+          "text": "this is the comment",
+          "giphyUrl": "url.com"
+        }
+      ]
+    },
+    {
+      "id": "0b5fd9a0-9562-40ff-a942-2c282dc05d89",
+      "title": "this is a test of our create route",
+      "body": "is it going to work the way i want it to work this time?",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "f647dbfd-bd7d-405a-8ab4-af7fd717021c",
+      "title": "testing if i can recieve something back this time.",
+      "body": "hello?",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "e901445f-818b-4223-85ea-6257a2d86b19",
+      "title": "sdfsdf",
+      "body": "sdfsdf",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "1c0743e2-43c2-46a8-8e71-7defbd2a2992",
+      "title": "fgjdfdhfgh",
+      "body": "dffgghdfgh",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "b62c2ecb-8893-459f-b045-7c27063cfaa3",
+      "title": "title",
+      "body": "message",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "466d578b-e280-4818-80bf-790f056c3922",
+      "title": "asasa",
+      "body": "sas",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    }
+  ]
 }
