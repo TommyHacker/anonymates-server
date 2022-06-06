@@ -3,7 +3,7 @@ const router = express.Router();
 const Article = require('../models/ArticleSchema');
 
 // create a new article POST request
-router.post('/:id', (req, res) => {
+router.post('/', (req, res) => {
 	try {
 		//
 		const { title, body } = req.body;
