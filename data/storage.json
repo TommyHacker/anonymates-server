@@ -1,0 +1,16 @@
+{
+    "articles": [
+        {
+            "id":1,
+            "title":"this is the first ever post",
+            "body":"this is the first ever posts body",
+            "likes":0,
+            "comments":[
+                {
+                    "comment":"this is the comment text",
+                    "giphyUrl":"this is the giphy url."
+                }
+            ]
+        }
+    ]
+}
