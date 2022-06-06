@@ -21,7 +21,6 @@
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^16.0.1",
-<<<<<<< HEAD
 		"express": "^4.18.1"
 	},
 	"dev-dependencies": {
@@ -30,14 +29,5 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.16"
-=======
-		"express": "^4.18.1",
-		"uuidv4": "^6.2.13"
-	},
-	"dev-dependencies": {
-		"jest": "^28.1.0",
-		"supertest": "^6.2.3",
-    "nodemon": "^2.0.16"
->>>>>>> 1066cee66f520953a05210a6c2153b7c3219c63d
 	}
 }
