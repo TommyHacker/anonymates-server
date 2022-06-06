@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script defer src="app.js"></script> -->
+</head>
+<body>
+    <script defer>
+        const get_gif = async (wSearch)=>{
+    
+    const api_key = 'grfrX5zkJtN2lUpb0RLNRAN1c82Me0Qc'
+    let searQ = wSearch.trim()
+    const api_url = `http://api.giphy.com/v1/gifs/search?q=${searQ}&api_key=${api_key}&limit=1`
+    
+    const resp = await fetch(api_url)
+    const api_data = await resp.json()
+    const {data} = api_data
+    
+
+    console.log(data);
+    console.log(data[0].images.original.url);
+    // console.log(data.images.original.url);
+    // .images.original.url
+}
+
+get_gif('charizard')
+    </script>
+</body>
+</html>
