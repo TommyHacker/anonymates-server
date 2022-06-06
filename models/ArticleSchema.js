@@ -4,7 +4,7 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 // this will allow us to grab the text from our storage file gobally
-const data = fs.readFileSync('../data/storage.json', 'utf-8');
+const data = fs.readFileSync('./data/storage.json', 'utf-8');
 // this will turn that storage text into javascript
 const parsedData = JSON.parse(data);
 
@@ -48,7 +48,7 @@ class Article {
 			template.articles.push(this);
 		}
 		// replace data file with new template data
-		fs.writeFileSync('../data/storage.json', JSON.stringify(template, null, 2));
+		fs.writeFileSync('./data/storage.json', JSON.stringify(template, null, 2));
 	}
 
 	static findAll = () => {
