@@ -75,4 +75,22 @@ class Article {
 		return result;
 	};
 }
+
+
+
+
+// const Article = require("./models/ArticleSchema")
+
+// const article = new Article()
+// const { body, title } = req.body;
+
+// const article = new Article(title, body);
+// article.save()
+
+// const { id } = req.params;
+// const article = Article.findOne(id);
+// article.likes++;
+// article.save();
+
+
 module.exports = Article;
