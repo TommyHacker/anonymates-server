@@ -1,7 +1,7 @@
 // for communicating with filesystem
 const fs = require('fs');
 // for generating unique ID's
-const { v4: uuidv4 } = require('uuidv4');
+const { v4: uuidv4 } = require('uuid');
 
 // this will allow us to grab the text from our storage file gobally
 const data = fs.readFileSync('../data/storage.json', 'utf-8');
@@ -75,4 +75,18 @@ class Article {
 		return result;
 	};
 }
-module.exports = article;
+
+// const Article = require("./models/ArticleSchema")
+
+// const article = new Article()
+// const { body, title } = req.body;
+
+// const article = new Article(title, body);
+// article.save()
+
+// const { id } = req.params;
+// const article = Article.findOne(id);
+// article.likes++;
+// article.save();
+
+// module.exports = article;
