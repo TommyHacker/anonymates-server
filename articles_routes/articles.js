@@ -42,7 +42,16 @@ router.put('/:id/like', (req, res) => {
 });
 
 router.put('/:id/comment', (req, res) => {
-    
+	try{
+		const id = req.params.id;
+		const article = Article.findOne(id);
+		const {text, giphyUrl} = req.body
+		article.comments.push({text , giphyUrl}) 
+		article.save() 
+	} catch (err) {
+		console.log(err.message);
+		res.send('sos error wrong')
+	}
 });
 
 //localhost:PORT/articles
