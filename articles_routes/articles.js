@@ -2,8 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/ArticleSchema');
 
+router.post('/test', (req, res) => {
+	const article = new Article('random title', 'random body');
+	article.save();
+	res.send('saved new article');
+});
 // create a new article POST request
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 	try {
 		//
 		const { title, body } = req.body.data;
