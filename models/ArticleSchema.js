@@ -76,6 +76,9 @@ class Article {
 	};
 }
 
+
+
+
 // const Article = require("./models/ArticleSchema")
 
 // const article = new Article()
@@ -89,4 +92,5 @@ class Article {
 // article.likes++;
 // article.save();
 
-// module.exports = article;
+
+module.exports = Article;
