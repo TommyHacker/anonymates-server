@@ -16,11 +16,11 @@
 			"id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
 			"title": "second article title",
 			"body": "this is the body",
-			"likes": 6,
+			"likes": 9,
 			"comments": [
 				{
-					"text": "hsdruthesriuthslidrfgh",
-					"giphyUrl": "aerghlsdjkfhgkldjhf"
+					"text": "this is the comment",
+					"giphyUrl": "url.com"
 				}
 			]
 		}
