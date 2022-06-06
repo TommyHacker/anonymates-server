@@ -6,7 +6,7 @@ const Article = require('../models/ArticleSchema');
 router.post('/', (req, res) => {
 	try {
 		//
-		const { title, body } = req.body;
+		const { title, body } = req.body.data;
 		if (!title || !body || body.length > 1000)
 			return res
 				.status(300)
@@ -42,15 +42,15 @@ router.put('/:id/like', (req, res) => {
 });
 
 router.put('/:id/comment', (req, res) => {
-	try{
+	try {
 		const id = req.params.id;
 		const article = Article.findOne(id);
-		const {text, giphyUrl} = req.body
-		article.comments.push({text , giphyUrl}) 
-		article.save() 
+		const { text, giphyUrl } = req.body;
+		article.comments.push({ text, giphyUrl });
+		article.save();
 	} catch (err) {
 		console.log(err.message);
-		res.send('sos error wrong')
+		res.send('sos error wrong');
 	}
 });
 
