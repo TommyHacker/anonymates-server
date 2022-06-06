@@ -1,17 +1,31 @@
 {
-    "articles": [
+  "articles": [
+    {
+      "id": 1,
+      "title": "this is the first ever post",
+      "body": "this is the first ever posts body",
+      "likes": 0,
+      "comments": [
         {
-            "id":1,
-            "title":"this is the first ever post",
-            "body":"this is the first ever posts body",
-            "likes":0,
-            "comments":[
-                {
-                    "comment":"this is the comment text",
-                    "giphyUrl":"this is the giphy url."
-                }
-            ]
+          "text": "this is the comment text",
+          "giphyUrl": "this is the giphy url."
         }
+      ]
+    },
+    {
+      "id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
+      "title": "second article title",
+      "body": "this is the body",
+      "likes": 6,
+      "comments": [
+        {
+          "text": "hsdruthesriuthslidrfgh",
+          "giphyUrl": "aerghlsdjkfhgkldjhf"
+        }
+      ]
+    }
+  ]
+}
     ]
 }
 
