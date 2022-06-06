@@ -27,13 +27,12 @@ app.use(express.json())
 
 //localhost:PORT
 app.get('/', (req, res)=>{
-    // res.send('/ page loaded')
-    res.send(get_gif('dragon'))
+    res.send('/ page loaded')
+    // res.send(get_gif('dragon'))
     
 })
 
 //localhost:PORT/articles
-const articles_All = require('./articles_routes/articles')
 app.use('/articles', articles_route )
 
 //localhost:PORT/articles/:id

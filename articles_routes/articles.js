@@ -1,8 +1,10 @@
 const  express = require('express')
 const router = express.Router()
 const Article = require('../models/ArticleSchema')
+
+
 //localhost:PORT/articles
-router.get('/articles', (req, res)=>{
+router.get('/', (req, res)=>{
     try{
         const articles =  Article.findAll()
 
@@ -15,7 +17,7 @@ router.get('/articles', (req, res)=>{
 
 
 //localhost:PORT/articles/:id
-router.get('/articles/:id', (req, res)=>{
+router.get('/:id', (req, res)=>{
     try{
         const {id} = req.params
 
@@ -29,4 +31,4 @@ router.get('/articles/:id', (req, res)=>{
 
 
 
-module.export = router
+module.exports = router
