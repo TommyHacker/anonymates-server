@@ -11,7 +11,7 @@ const Article = require('../models/ArticleSchema');
 // 	// res.redirect('/1')
 	
 // 	// res.json(data)
-// 	article.save();
+// 	// article.save();
 // })
 
 router.post('/', (req, res) => {
@@ -26,11 +26,12 @@ router.post('/', (req, res) => {
 				);
 		const article = new Article(title, body);
 		article.save();
-		res.json({
-			status: 'success',
-			message: 'article saved successfully.',
-			data: article,
-		});
+		res.redirect('../client/about.html')
+		// res.json({
+		// 	status: 'success',
+		// 	message: 'article saved successfully.',
+		// 	data: article,
+		// });
 	} catch (err) {
 		console.log(err.message);
 		res.send('something went wrong while creating article.');
@@ -59,6 +60,7 @@ router.put('/:id/comment', (req, res) => {
 		const {text, giphyUrl} = req.body
 		article.comments.push({text , giphyUrl}) 
 		article.save() 
+		res.send(article)
 	} catch (err) {
 		console.log(err.message);
 		res.send('sos error wrong')
