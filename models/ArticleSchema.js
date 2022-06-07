@@ -27,6 +27,7 @@ class Article {
 		this.body = body;
 		this.likes = 0;
 		this.blockIp = [];
+		this.giphyUrl = '';
 		this.comments = [{ text: '', giphyUrl: '' }];
 	}
 	save() {
@@ -43,6 +44,7 @@ class Article {
 				article.likes = this.likes;
 				article.comments = this.comments;
 				article.blockIp = this.blockIp;
+				article.giphyUrl = this.giphyUrl;
 			}
 		});
 		if (!foundArticle) {

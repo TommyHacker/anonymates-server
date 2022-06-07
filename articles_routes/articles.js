@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 
 // comment on or like an article PUT request
 
-router.put('/:id/like', (req, res) => {
+router.post('/:id/like', (req, res) => {
 	try {
 		//get ip
 		const thisIp = req.ip;
@@ -59,13 +59,15 @@ router.put('/:id/like', (req, res) => {
 	}
 });
 
-router.put('/:id/comment', (req, res) => {
+router.post('/:id/comment', (req, res) => {
 	try {
 		const id = req.params.id;
 		const article = Article.findOne(id);
-		const { text, giphyUrl } = req.body;
+
+		const { text, giphyUrl } = req.body.data;
 		article.comments.push({ text, giphyUrl });
 		article.save();
+		res.send('got message!');
 	} catch (err) {
 		console.log(err.message);
 		res.send('sos error wrong');
