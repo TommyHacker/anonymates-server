@@ -9,6 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+	console.log(`request came from ${req.ip}`);
+	next();
+});
+
 // const get_gif = async (wSearch)=>{
 
 //     const api_key = 'grfrX5zkJtN2lUpb0RLNRAN1c82Me0Qc'

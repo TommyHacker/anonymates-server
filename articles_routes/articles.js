@@ -2,8 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Article = require('../models/ArticleSchema');
 
+router.post('/test', (req, res) => {
+	const article = new Article('random title', 'random body');
+	article.save();
+	res.send('saved new article');
+});
 // create a new article POST request
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 	try {
 		//
 		const { title, body } = req.body.data;
@@ -28,26 +33,41 @@ router.post('/', (req, res) => {
 
 // comment on or like an article PUT request
 
-router.put('/:id/like', (req, res) => {
+router.post('/:id/like', (req, res) => {
 	try {
+		//get ip
+		const thisIp = req.ip;
 		const id = req.params.id;
+		let permission = true;
 		const article = Article.findOne(id);
-		article.likes++;
-		article.save();
-		res.send(article);
+
+		article.blockIp.map((val) => {
+			if (val == thisIp) return (permission = false);
+		});
+
+		if (permission) {
+			article.likes++;
+			article.blockIp.push(thisIp);
+			article.save();
+			res.send(article);
+		} else {
+			res.send('you cannot like an article twice.');
+		}
 	} catch (err) {
 		console.log(err.message);
 		res.send('error');
 	}
 });
 
-router.put('/:id/comment', (req, res) => {
+router.post('/:id/comment', (req, res) => {
 	try {
 		const id = req.params.id;
 		const article = Article.findOne(id);
-		const { text, giphyUrl } = req.body;
+
+		const { text, giphyUrl } = req.body.data;
 		article.comments.push({ text, giphyUrl });
 		article.save();
+		res.send('got message!');
 	} catch (err) {
 		console.log(err.message);
 		res.send('sos error wrong');
