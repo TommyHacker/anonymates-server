@@ -26,6 +26,8 @@ class Article {
 		this.title = title;
 		this.body = body;
 		this.likes = 0;
+		this.blockIp = [];
+		this.giphyUrl = '';
 		this.comments = [{ text: '', giphyUrl: '' }];
 	}
 	save() {
@@ -41,6 +43,8 @@ class Article {
 				article.body = this.body;
 				article.likes = this.likes;
 				article.comments = this.comments;
+				article.blockIp = this.blockIp;
+				article.giphyUrl = this.giphyUrl;
 			}
 		});
 		if (!foundArticle) {
@@ -76,9 +80,6 @@ class Article {
 	};
 }
 
-
-
-
 // const Article = require("./models/ArticleSchema")
 
 // const article = new Article()
@@ -91,6 +92,5 @@ class Article {
 // const article = Article.findOne(id);
 // article.likes++;
 // article.save();
-
 
 module.exports = Article;
