@@ -89,8 +89,9 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 	try {
 		const { id } = req.params;
+		const article = Article.findOne(id);
 
-		res.send(' single articles placed here');
+		res.send(article);
 	} catch (error) {
 		console.error(error);
 		res.send('something went wrong');
