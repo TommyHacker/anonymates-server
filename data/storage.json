@@ -1,28 +1,43 @@
 {
-	"articles": [
-		{
-			"id": 1,
-			"title": "this is the first ever post",
-			"body": "this is the first ever posts body",
-			"likes": 0,
-			"comments": [
-				{
-					"text": "this is the comment text",
-					"giphyUrl": "this is the giphy url."
-				}
-			]
-		},
-		{
-			"id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
-			"title": "second article title",
-			"body": "this is the body",
-			"likes": 9,
-			"comments": [
-				{
-					"text": "this is the comment",
-					"giphyUrl": "url.com"
-				}
-			]
-		}
-	]
+  "articles": [
+    {
+      "id": 1,
+      "title": "this is the first ever post",
+      "body": "this is the first ever posts body",
+      "likes": 0,
+      "comments": [
+        {
+          "text": "this is the comment text",
+          "giphyUrl": "this is the giphy url."
+        }
+      ]
+    },
+    {
+      "id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
+      "title": "second article title",
+      "body": "this is the body",
+      "likes": 23,
+      "comments": [
+        {
+          "text": "this is the comment",
+          "giphyUrl": "url.com"
+        }
+      ]
+    },
+    {
+      "id": "0d1e1599-7504-469a-a6f5-bb9f3f6ca666",
+      "title": "this is a title",
+      "body": "this is a body",
+      "likes": 1,
+      "blockIp": [
+        "::ffff:127.0.0.1"
+      ],
+      "comments": [
+        {
+          "text": "",
+          "giphyUrl": ""
+        }
+      ]
+    }
+  ]
 }

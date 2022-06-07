@@ -35,11 +35,24 @@ router.post('/', async (req, res) => {
 
 router.put('/:id/like', (req, res) => {
 	try {
+		//get ip
+		const thisIp = req.ip;
 		const id = req.params.id;
+		let permission = true;
 		const article = Article.findOne(id);
-		article.likes++;
-		article.save();
-		res.send(article);
+
+		article.blockIp.map((val) => {
+			if (val == thisIp) return (permission = false);
+		});
+
+		if (permission) {
+			article.likes++;
+			article.blockIp.push(thisIp);
+			article.save();
+			res.send(article);
+		} else {
+			res.send('you cannot like an article twice.');
+		}
 	} catch (err) {
 		console.log(err.message);
 		res.send('error');
