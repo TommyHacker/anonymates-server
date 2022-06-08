@@ -26,6 +26,11 @@
 		"uuidv4": "^6.2.13",
 		"nodemon": "^2.0.16"
 	},
+	"nodemonConfig": {
+		"ignore": [
+			"*.json"
+		]
+	},
 	"devDependencies": {
 		"jest": "^28.1.0",
 		"supertest": "^6.2.3"
