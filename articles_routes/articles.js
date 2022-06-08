@@ -122,6 +122,7 @@ router.post('/:id/reaction', (req, res) => {
 	try {
 		const ip = req.ip;
 		const { reaction } = req.body.data;
+		console.log(reaction);
 		const { id } = req.params;
 		let permission = true;
 		const article = Article.findOne(id);

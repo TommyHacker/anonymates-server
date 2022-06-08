@@ -87,6 +87,13 @@ class Article {
 	};
 }
 
+// const newArticle = new Article(
+// 	'this will be the second article which also has all new functionality',
+// 	'we can use this to test everything works properly',
+// 	'this is not a real url for giphy'
+// );
+
+// newArticle.save();
 // const Article = require("./models/ArticleSchema")
 
 // const article = new Article()
