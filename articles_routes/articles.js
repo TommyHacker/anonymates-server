@@ -65,12 +65,8 @@ router.post('/:id/comment', (req, res) => {
 		const id = req.params.id;
 		let permission = true;
 		const article = Article.findOne(id);
+		const { text, giphyUrl } = req.body;
 
-		article.blockIp.map((val) => {
-			if (val == thisIp) return (permission = false);
-		});
-
-		const { text, giphyUrl } = req.body.data;
 		if (!giphyUrl || !text) {
 			res.json({
 				status: 'fail',
