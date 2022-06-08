@@ -11,14 +11,14 @@ router.post('/test', (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		//
-		const { title, body } = req.body.data;
+		const { title, body, giphyUrl } = req.body.data;
 		if (!title || !body || body.length > 1000)
 			return res
 				.status(300)
 				.send(
 					'title and article body required. article body must be 1,000 characters or less.'
 				);
-		const article = new Article(title, body);
+		const article = new Article(title, body, giphyUrl);
 		article.save();
 		res.json({
 			status: 'success',
@@ -49,7 +49,11 @@ router.post('/:id/like', (req, res) => {
 			article.likes++;
 			article.blockIp.push(thisIp);
 			article.save();
-			res.send(article);
+			res.json({
+				status: 'success',
+				message: 'article likes incremented successfully.',
+				likes: article.likes,
+			});
 		} else {
 			res.send('you cannot like an article twice.');
 		}
@@ -68,8 +72,7 @@ router.post('/:id/comment', (req, res) => {
 		if (!giphyUrl && !text) {
 			return res.json({
 				status: 'fail',
-				message:
-					'you need to send a body:{giphyUrl: `url here`, text: `comment text here`}',
+				message: 'something went wrong while posting comment.',
 			});
 		} else {
 			article.comments.push({ text, giphyUrl });
@@ -82,7 +85,7 @@ router.post('/:id/comment', (req, res) => {
 		}
 	} catch (err) {
 		console.log(err.message);
-		res.send('sos error wrong');
+		res.send('something went wrong while posting comment.');
 	}
 });
 
@@ -113,12 +116,25 @@ router.get('/:id', (req, res) => {
 // reaction route
 router.post('/:id/reaction', (req, res) => {
 	try {
+		const ip = req.ip;
 		const { reaction } = req.body.data;
 		const { id } = req.params;
+		let permission = true;
 		const article = Article.findOne(id);
-		article.reactions[reaction] = article.reactions[reaction] + 1;
-		article.save();
-		res.json({ status: 'success', message: 'reaction added', data: article });
+		article.reactions[reaction].blockIp.map((blockedIp) => {
+			if (blockedIp == ip) return (permission = false);
+		});
+		if (permission) {
+			article.reactions[reaction].count = article.reactions[reaction].count + 1;
+			article.reactions[reaction].blockIp.push(ip);
+			article.save();
+			res.json({ status: 'success', message: 'reaction added', data: article });
+		} else {
+			res.json({
+				status: 'fail',
+				message: 'you cannot give the same reaction twice!',
+			});
+		}
 	} catch (err) {
 		console.log(err);
 		res.json({
