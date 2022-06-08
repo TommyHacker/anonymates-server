@@ -49,9 +49,9 @@ router.post('/:id/like', (req, res) => {
 			article.likes++;
 			article.blockIp.push(thisIp);
 			article.save();
-			res.send(article);
+			res.send(article.likes);
 		} else {
-			res.send('you cannot like an article twice.');
+			res.send(article.likes);
 		}
 	} catch (err) {
 		console.log(err.message);
