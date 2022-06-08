@@ -61,8 +61,14 @@ router.post('/:id/like', (req, res) => {
 
 router.post('/:id/comment', (req, res) => {
 	try {
+		const thisIp = req.ip;
 		const id = req.params.id;
+		let permission = true;
 		const article = Article.findOne(id);
+
+		article.blockIp.map((val) => {
+			if (val == thisIp) return (permission = false);
+		});
 
 		const { text, giphyUrl } = req.body.data;
 		if (!giphyUrl || !text) {
@@ -74,7 +80,11 @@ router.post('/:id/comment', (req, res) => {
 		}
 		article.comments.push({ text, giphyUrl });
 		article.save();
-		res.send('got message!');
+		res.json({
+			status: 'got message!',
+			message: 'saved new comment',
+			data: article.comments,
+		});
 	} catch (err) {
 		console.log(err.message);
 		res.send('sos error wrong');
@@ -102,6 +112,25 @@ router.get('/:id', (req, res) => {
 	} catch (error) {
 		console.error(error);
 		res.send('something went wrong');
+	}
+});
+
+// reaction route
+router.post('/:id/reaction', (req, res) => {
+	try {
+		const { reaction } = req.body.data;
+		const { id } = req.params;
+		const article = Article.findOne(id);
+		article.reactions[reaction] = article.reactions[reaction] + 1;
+		article.save();
+		res.json({ status: 'success', message: 'reaction added', data: article });
+	} catch (err) {
+		console.log(err);
+		res.json({
+			status: 'fail',
+			message: 'something went wrong',
+			data: err.message,
+		});
 	}
 });
 
