@@ -126,18 +126,19 @@ router.post('/:id/reaction', (req, res) => {
 		const { id } = req.params;
 		let permission = true;
 		const article = Article.findOne(id);
-		article.reactions[reaction].blockIp.map((blockedIp) => {
+		article.reactions[reaction].blockedIp.map((blockedIp) => {
 			if (blockedIp == ip) return (permission = false);
 		});
 		if (permission) {
 			article.reactions[reaction].count = article.reactions[reaction].count + 1;
-			article.reactions[reaction].blockIp.push(ip);
+			article.reactions[reaction].blockedIp.push(ip);
 			article.save();
 			res.json({ status: 'success', message: 'reaction added', data: article });
 		} else {
 			res.json({
 				status: 'fail',
 				message: 'you cannot give the same reaction twice!',
+				reaction: article.reactions[reaction].count,
 			});
 		}
 	} catch (err) {
