@@ -55,7 +55,11 @@ router.post('/:id/like', (req, res) => {
 				likes: article.likes,
 			});
 		} else {
-			res.send('you cannot like an article twice.');
+			res.json({
+				status: 'failed',
+				message: 'you cannot like an article twice.',
+				data: article.likes,
+			});
 		}
 	} catch (err) {
 		console.log(err.message);
