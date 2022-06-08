@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 
 // comment on or like an article PUT request
 
-router.post('/:id/like', (req, res) => {
+router.post('/:id/like', async (req, res) => {
 	try {
 		//get ip
 		const thisIp = req.ip;
@@ -41,7 +41,7 @@ router.post('/:id/like', (req, res) => {
 		let permission = true;
 		const article = Article.findOne(id);
 
-		article.blockIp.map((val) => {
+		await article.blockIp.map((val) => {
 			if (val == thisIp) return (permission = false);
 		});
 
