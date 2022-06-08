@@ -63,7 +63,7 @@ router.post('/:id/like', (req, res) => {
 		}
 	} catch (err) {
 		console.log(err.message);
-		res.send('error');
+		res.send({ message: err.message });
 	}
 });
 
