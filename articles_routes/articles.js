@@ -65,6 +65,13 @@ router.post('/:id/comment', (req, res) => {
 		const article = Article.findOne(id);
 
 		const { text, giphyUrl } = req.body.data;
+		if (!giphyUrl || !text) {
+			res.json({
+				status: 'fail',
+				message:
+					'you need to send a body:{giphyUrl: `url here`, text: `comment text here`}',
+			});
+		}
 		article.comments.push({ text, giphyUrl });
 		article.save();
 		res.send('got message!');
