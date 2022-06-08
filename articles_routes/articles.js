@@ -61,26 +61,25 @@ router.post('/:id/like', (req, res) => {
 
 router.post('/:id/comment', (req, res) => {
 	try {
-		const thisIp = req.ip;
 		const id = req.params.id;
-		let permission = true;
 		const article = Article.findOne(id);
 		const { text, giphyUrl } = req.body;
-
-		if (!giphyUrl || !text) {
-			res.json({
+		console.log(req.body, 'recieved');
+		if (!giphyUrl && !text) {
+			return res.json({
 				status: 'fail',
 				message:
 					'you need to send a body:{giphyUrl: `url here`, text: `comment text here`}',
 			});
+		} else {
+			article.comments.push({ text, giphyUrl });
+			article.save();
+			res.json({
+				status: 'got message!',
+				message: 'saved new comment',
+				data: article.comments,
+			});
 		}
-		article.comments.push({ text, giphyUrl });
-		article.save();
-		res.json({
-			status: 'got message!',
-			message: 'saved new comment',
-			data: article.comments,
-		});
 	} catch (err) {
 		console.log(err.message);
 		res.send('sos error wrong');

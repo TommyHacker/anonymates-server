@@ -9,7 +9,18 @@
         {
           "text": "this is the comment text",
           "giphyUrl": "this is the giphy url."
+        },
+        {
+          "text": "",
+          "giphyUrl": "https://media1.giphy.com/media/xIytx7kHpq74c/200.gif?cid=73c2368fgd9m6l28cnm1cmoaiebqnesjitdycw4ot65g3fbo&rid=200.gif&ct=g"
         }
+      ],
+      "blockIp": [],
+      "giphyUrl": "",
+      "reactions": [
+        0,
+        0,
+        0
       ]
     },
     {
