@@ -29,6 +29,7 @@ class Article {
 		this.blockIp = [];
 		this.giphyUrl = '';
 		this.comments = [{ text: '', giphyUrl: '' }];
+		this.reactions = [0, 0, 0];
 	}
 	save() {
 		// clone the data so we can manipulate it
@@ -45,6 +46,7 @@ class Article {
 				article.comments = this.comments;
 				article.blockIp = this.blockIp;
 				article.giphyUrl = this.giphyUrl;
+				article.reactions = this.reactions;
 			}
 		});
 		if (!foundArticle) {
