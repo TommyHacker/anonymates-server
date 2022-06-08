@@ -15,16 +15,22 @@
       ],
       "reactions": [
         {
-          "count": 0,
-          "blockedIp": []
+          "count": 1,
+          "blockedIp": [
+            "::1"
+          ]
         },
         {
-          "count": 0,
-          "blockedIp": []
+          "count": 1,
+          "blockedIp": [
+            "::1"
+          ]
         },
         {
-          "count": 0,
-          "blockedIp": []
+          "count": 1,
+          "blockedIp": [
+            "::1"
+          ]
         }
       ]
     },
