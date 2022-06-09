@@ -136,7 +136,7 @@ router.post('/:id/reaction', (req, res) => {
 			res.json({
 				status: 'success',
 				message: 'reaction added',
-				data: article.reactions[reaction].count,
+				reaction: article.reactions[reaction].count,
 			});
 		} else {
 			res.json({
