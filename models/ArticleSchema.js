@@ -20,28 +20,19 @@ const convertObject = (object) => {
 
 class Article {
 	// only title and body needed to create an article. ID likes and comments are already taken care of.
-	constructor(title, body) {
+	constructor(title, body, giphyUrl = '') {
 		// uuidv4 will generate a unique id on article creation.
 		this.id = uuidv4();
 		this.title = title;
 		this.body = body;
 		this.likes = 0;
 		this.blockIp = [];
-		this.giphyUrl = '';
+		this.giphyUrl = giphyUrl;
 		this.comments = [{ text: '', giphyUrl: '' }];
 		this.reactions = [
-			{
-				'🍔': 0,
-			},
-			{
-				'😝': 0,
-			},
-			{
-				'😂': 0,
-			},
-			{
-				'🚀': 0,
-			},
+			{ count: 0, blockedIp: [] },
+			{ count: 0, blockedIp: [] },
+			{ count: 0, blockedIp: [] },
 		];
 	}
 	save() {
@@ -58,6 +49,8 @@ class Article {
 				article.likes = this.likes;
 				article.comments = this.comments;
 				article.blockIp = this.blockIp;
+				article.giphyUrl = this.giphyUrl;
+				article.reactions = this.reactions;
 				article.giphyUrl = this.giphyUrl;
 			}
 		});
@@ -94,10 +87,17 @@ class Article {
 	};
 }
 
+// const newArticle = new Article(
+// 	'this will be the second article which also has all new functionality',
+// 	'we can use this to test everything works properly',
+// 	'this is not a real url for giphy'
+// );
+
+// newArticle.save();
 // const Article = require("./models/ArticleSchema")
 
 // const article = new Article()
-// const { body, title } = req.body;
+// const { body, title, giphyUrl } = req.body;
 
 // const article = new Article(title, body);
 // article.save()

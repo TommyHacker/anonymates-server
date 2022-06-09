@@ -1,56 +1,64 @@
 {
-  "articles": [
-    {
-      "id": 1,
-      "title": "this is the first ever post",
-      "body": "this is the first ever posts body",
-      "likes": 0,
-      "comments": [
-        {
-          "text": "this is the comment text",
-          "giphyUrl": "this is the giphy url."
-        }
-      ]
-    },
-    {
-      "id": "2adfgsdfg-wyr5hsthre-aehsrthadrfg-athsrthsh",
-      "title": "second article title",
-      "body": "this is the body",
-      "likes": 23,
-      "comments": [
-        {
-          "text": "this is the comment",
-          "giphyUrl": "url.com"
-        }
-      ]
-    },
-    {
-      "id": "b4eec2d6-1a21-4f0f-a20a-e2acdc340d9f",
-      "title": "this is a title",
-      "body": "this is a body",
-      "likes": 0,
-      "blockIp": [],
-      "giphyUrl": "",
-      "comments": [
-        {
-          "text": "",
-          "giphyUrl": ""
-        }
-      ],
-      "reactions": [
-        {
-          "🍔": 0
-        },
-        {
-          "😝": 0
-        },
-        {
-          "😂": 0
-        },
-        {
-          "🚀": 0
-        }
-      ]
-    }
-  ]
+	"articles": [
+		{
+			"id": "54dacbf8-4be2-4fc7-88b0-e6f268832c5f",
+			"title": "this is the main test article",
+			"body": "we can use this to test everything works properly",
+			"likes": 1,
+			"blockIp": ["::ffff:127.0.0.1"],
+			"giphyUrl": "",
+			"comments": [
+				{
+					"text": "",
+					"giphyUrl": ""
+				},
+				{
+					"text": "comment text",
+					"giphyUrl": ""
+				}
+			],
+			"reactions": [
+				{
+					"count": 2,
+					"blockedIp": ["::1", "::ffff:127.0.0.1"]
+				},
+				{
+					"count": 1,
+					"blockedIp": ["::1"]
+				},
+				{
+					"count": 1,
+					"blockedIp": ["::1"]
+				}
+			]
+		},
+		{
+			"id": "4f728e6a-1a73-4ab9-a175-0cfef3c52318",
+			"title": "this will be the second article which also has all new functionality",
+			"body": "we can use this to test everything works properly",
+			"likes": 0,
+			"blockIp": [],
+			"giphyUrl": "this is not a real url for giphy",
+			"comments": [
+				{
+					"text": "",
+					"giphyUrl": ""
+				}
+			],
+			"reactions": [
+				{
+					"count": 0,
+					"blockedIp": []
+				},
+				{
+					"count": 0,
+					"blockedIp": []
+				},
+				{
+					"count": 0,
+					"blockedIp": []
+				}
+			]
+		}
+	]
 }

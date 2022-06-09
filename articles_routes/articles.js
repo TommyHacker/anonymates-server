@@ -11,20 +11,21 @@ router.post('/test', (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		//
-		const { title, body } = req.body.data;
+		const { title, body, giphyUrl } = req.body.data;
 		if (!title || !body || body.length > 1000)
 			return res
 				.status(300)
 				.send(
 					'title and article body required. article body must be 1,000 characters or less.'
 				);
-		const article = new Article(title, body);
+		const article = new Article(title, body, giphyUrl);
 		article.save();
-		res.json({
-			status: 'success',
-			message: 'article saved successfully.',
-			data: article,
-		});
+		res.redirect('../client/about.html');
+		// res.json({
+		// 	status: 'success',
+		// 	message: 'article saved successfully.',
+		// 	data: article,
+		// });
 	} catch (err) {
 		console.log(err.message);
 		res.send('something went wrong while creating article.');
@@ -33,7 +34,7 @@ router.post('/', async (req, res) => {
 
 // comment on or like an article PUT request
 
-router.post('/:id/like', (req, res) => {
+router.post('/:id/like', async (req, res) => {
 	try {
 		//get ip
 		const thisIp = req.ip;
@@ -41,7 +42,7 @@ router.post('/:id/like', (req, res) => {
 		let permission = true;
 		const article = Article.findOne(id);
 
-		article.blockIp.map((val) => {
+		await article.blockIp.map((val) => {
 			if (val == thisIp) return (permission = false);
 		});
 
@@ -49,13 +50,21 @@ router.post('/:id/like', (req, res) => {
 			article.likes++;
 			article.blockIp.push(thisIp);
 			article.save();
-			res.send(article.likes);
+			res.json({
+				status: 'success',
+				message: 'article likes incremented successfully.',
+				likes: article.likes,
+			});
 		} else {
-			res.send(article.likes);
+			res.json({
+				status: 'failed',
+				message: 'you cannot like an article twice.',
+				likes: article.likes,
+			});
 		}
 	} catch (err) {
 		console.log(err.message);
-		res.send('error');
+		res.send({ message: err.message });
 	}
 });
 
@@ -63,14 +72,25 @@ router.post('/:id/comment', (req, res) => {
 	try {
 		const id = req.params.id;
 		const article = Article.findOne(id);
-
-		const { text, giphyUrl } = req.body.data;
-		article.comments.push({ text, giphyUrl });
-		article.save();
-		res.send('got message!');
+		const { text, giphyUrl } = req.body;
+		console.log(req.body, 'recieved');
+		if (!giphyUrl && !text) {
+			return res.json({
+				status: 'fail',
+				message: 'something went wrong while posting comment.',
+			});
+		} else {
+			article.comments.push({ text, giphyUrl });
+			article.save();
+			res.json({
+				status: 'got message!',
+				message: 'saved new comment',
+				data: article.comments,
+			});
+		}
 	} catch (err) {
 		console.log(err.message);
-		res.send('sos error wrong');
+		res.send('something went wrong while posting comment.');
 	}
 });
 
@@ -95,6 +115,44 @@ router.get('/:id', (req, res) => {
 	} catch (error) {
 		console.error(error);
 		res.send('something went wrong');
+	}
+});
+
+// reaction route
+router.post('/:id/reaction', (req, res) => {
+	try {
+		const ip = req.ip;
+		const { reaction } = req.body.data;
+		console.log(reaction);
+		const { id } = req.params;
+		let permission = true;
+		const article = Article.findOne(id);
+		article.reactions[reaction].blockedIp.map((blockedIp) => {
+			if (blockedIp == ip) return (permission = false);
+		});
+		if (permission) {
+			article.reactions[reaction].count = article.reactions[reaction].count + 1;
+			article.reactions[reaction].blockedIp.push(ip);
+			article.save();
+			res.json({
+				status: 'success',
+				message: 'reaction added',
+				reaction: article.reactions[reaction].count,
+			});
+		} else {
+			res.json({
+				status: 'fail',
+				message: 'you cannot give the same reaction twice!',
+				reaction: article.reactions[reaction].count,
+			});
+		}
+	} catch (err) {
+		console.log(err);
+		res.json({
+			status: 'fail',
+			message: 'something went wrong',
+			data: err.message,
+		});
 	}
 });
 
