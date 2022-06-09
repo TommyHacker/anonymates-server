@@ -19,7 +19,34 @@ describe('api endpoints', () => {
 			request(app).get('/articles').expect(200, done);
 		});
 		it('Returns statusCode 200 from /articles/:id', (done) => {
-			request(app).get('/articles/1').expect(200, done);
+			request(app)
+				.get('/articles/54dacbf8-4be2-4fc7-88b0-e6f268832c5f')
+				.expect(200, done);
+		});
+		// POST
+		it('Returns statusCode 200 from /articles/:id', (done) => {
+			request(app)
+				.post('/articles')
+				.send({ title: 'title', body: 'body' })
+				.expect(200, done);
+		});
+		it('Returns statusCode 200 from /articles/:id', (done) => {
+			request(app)
+				.post('/articles/54dacbf8-4be2-4fc7-88b0-e6f268832c5f/like')
+				.send({ like: 1 })
+				.expect(200, done);
+		});
+		it('Returns statusCode 200 post comment', (done) => {
+			request(app)
+				.post('/articles/54dacbf8-4be2-4fc7-88b0-e6f268832c5f/comment')
+				.send({ text: 'comment text', giphyUrl: 'gif url' })
+				.expect(200, done);
+		});
+		it('Returns statusCode 200 from /articles/:id', (done) => {
+			request(app)
+				.post('/articles/54dacbf8-4be2-4fc7-88b0-e6f268832c5f/reaction')
+				.send({ data: { reaction: 0 } })
+				.expect(200, done);
 		});
 	});
 });
