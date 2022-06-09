@@ -4,20 +4,27 @@
       "id": "54dacbf8-4be2-4fc7-88b0-e6f268832c5f",
       "title": "this is the main test article",
       "body": "we can use this to test everything works properly",
-      "likes": 0,
-      "blockIp": [],
+      "likes": 1,
+      "blockIp": [
+        "::ffff:127.0.0.1"
+      ],
       "giphyUrl": "this is not a real url for giphy",
       "comments": [
         {
           "text": "",
           "giphyUrl": ""
+        },
+        {
+          "text": "comment text",
+          "giphyUrl": "gif url"
         }
       ],
       "reactions": [
         {
-          "count": 1,
+          "count": 2,
           "blockedIp": [
-            "::1"
+            "::1",
+            "::ffff:127.0.0.1"
           ]
         },
         {
