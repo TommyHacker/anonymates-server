@@ -20,12 +20,11 @@ router.post('/', async (req, res) => {
 				);
 		const article = new Article(title, body, giphyUrl);
 		article.save();
-		res.redirect('../client/about.html')
-		// res.json({
-		// 	status: 'success',
-		// 	message: 'article saved successfully.',
-		// 	data: article,
-		// });
+		res.json({
+			status: 'success',
+			message: 'article saved successfully.',
+			data: article,
+		});
 	} catch (err) {
 		console.log(err.message);
 		res.send('something went wrong while creating article.');
