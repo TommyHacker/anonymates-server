@@ -133,7 +133,11 @@ router.post('/:id/reaction', (req, res) => {
 			article.reactions[reaction].count = article.reactions[reaction].count + 1;
 			article.reactions[reaction].blockedIp.push(ip);
 			article.save();
-			res.json({ status: 'success', message: 'reaction added', data: article });
+			res.json({
+				status: 'success',
+				message: 'reaction added',
+				data: article.reactions[reaction].count,
+			});
 		} else {
 			res.json({
 				status: 'fail',
