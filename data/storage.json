@@ -2,9 +2,9 @@
 	"articles": [
 		{
 			"id": "54dacbf8-4be2-4fc7-88b0-e6f268832c5f",
-			"title": "this is the main test article",
-			"body": "we can use this to test everything works properly",
-			"likes": 1,
+			"title": "We accomplished so much this week",
+			"body": "We managed to work together and build this app with so many hurdles, and still finished every day with a laugh and a smile. well done us!",
+			"likes": 4,
 			"blockIp": ["::ffff:127.0.0.1"],
 			"giphyUrl": "",
 			"comments": [
@@ -33,10 +33,66 @@
 			]
 		},
 		{
-			"id": "4f728e6a-1a73-4ab9-a175-0cfef3c52318",
+			"id": "4f728e6a-1a73-4ab9-a175-0cfef3c523180",
+			"title": "Testing is cool.",
+			"body": "Remembering how to test front end vs back end is hard but we did it. i think that is a huge accomplishment and i cant wait to continue using what we have learned about testing on the anonymates project.",
+			"likes": 5,
+			"blockIp": [],
+			"giphyUrl": "",
+			"comments": [
+				{
+					"text": "",
+					"giphyUrl": ""
+				}
+			],
+			"reactions": [
+				{
+					"count": 0,
+					"blockedIp": []
+				},
+				{
+					"count": 0,
+					"blockedIp": []
+				},
+				{
+					"count": 0,
+					"blockedIp": []
+				}
+			]
+		},
+		{
+			"id": "4f728e6a-1a73-4ab9-a175-0cfef3c523181",
+			"title": "The anonymates Team",
+			"body": "The devs who work at anonymates seem to be really efficient, someone should try and give every single one of them a job!",
+			"likes": 3,
+			"blockIp": [],
+			"giphyUrl": "",
+			"comments": [
+				{
+					"text": "",
+					"giphyUrl": ""
+				}
+			],
+			"reactions": [
+				{
+					"count": 0,
+					"blockedIp": []
+				},
+				{
+					"count": 0,
+					"blockedIp": []
+				},
+				{
+					"count": 0,
+					"blockedIp": []
+				}
+			]
+		},
+		{
+			"id": "4f728e6a-1a73-4ab9-a175-0cfef3c523182",
 			"title": "this will be the second article which also has all new functionality",
 			"body": "we can use this to test everything works properly",
-			"likes": 0,
+			"likes": 1,
 			"blockIp": [],
 			"giphyUrl": "",
 			"comments": [
