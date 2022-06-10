@@ -174,7 +174,7 @@ router.get('/featured/3', (req, res) => {
 	}
 });
 
-router.post('/gif', async (req, res) => {
+router.post('/middleman/fetch/gif', async (req, res) => {
 	try {
 		const api_url = req.body.data;
 		console.log(req.body);
