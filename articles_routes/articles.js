@@ -155,9 +155,11 @@ router.post('/:id/reaction', (req, res) => {
 	}
 });
 
-router.get('/featured', (req, res) => {
+router.get('/featured/3', (req, res) => {
+	console.log('featured request!');
 	try {
 		const featured = Article.featured();
+		console.log('sending featured...', featured.length);
 		res.json({
 			status: 'success',
 			message: 'got featured articles',
