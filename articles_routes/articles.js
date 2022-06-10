@@ -182,10 +182,10 @@ router.post('/gif', async (req, res) => {
 		const resp = await fetch(api_url)
 			.then((res) => res.json())
 			.then((response) => (data = response));
-		const gif1 = data.data[0].images.fixed_height.url;
-		const gif2 = data.data[1].images.fixed_height.url;
-		const gif3 = data.data[2].images.fixed_height.url;
-		const gif4 = data.data[3].images.fixed_height.url;
+		const gif1 = await data.data[0].images.fixed_height.url;
+		const gif2 = await data.data[1].images.fixed_height.url;
+		const gif3 = await data.data[2].images.fixed_height.url;
+		const gif4 = await data.data[3].images.fixed_height.url;
 		res.json({ data: [gif1, gif2, gif3, gif4] });
 	} catch (err) {
 		console.log(err);
