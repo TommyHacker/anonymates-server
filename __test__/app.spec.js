@@ -48,5 +48,14 @@ describe('api endpoints', () => {
 				.send({ data: { reaction: 0 } })
 				.expect(200, done);
 		});
+		it('returns error string if no title included.', (done) => {
+			request(app)
+				.post('/articles')
+				.send({ data: { title: '', body: 'there is a body', giphyUrl: '' } })
+				.expect(
+					'title and article body required. article body must be 1,000 characters or less.',
+					done
+				);
+		});
 	});
 });

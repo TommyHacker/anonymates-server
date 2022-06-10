@@ -4,7 +4,7 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 // this will allow us to grab the text from our storage file gobally
-const data = fs.readFileSync('./data/storage.json', 'utf-8');
+const data = fs.readFileSync('../data/storage.json', 'utf-8');
 // this will turn that storage text into javascript
 const parsedData = JSON.parse(data);
 
@@ -59,8 +59,43 @@ class Article {
 			template.articles.push(this);
 		}
 		// replace data file with new template data
-		fs.writeFileSync('./data/storage.json', JSON.stringify(template, null, 2));
+		fs.writeFileSync('../data/storage.json', JSON.stringify(template, null, 2));
 	}
+
+	static featured = () => {
+		const temp = parsedData;
+		const tempArr = [];
+
+		// start with three spaces with 0 likes;
+		let chosenOne = 0;
+		let chosenTwo = 0;
+		let chosenThree = 0;
+
+		// lets check how many likes each article has.
+		temp.articles.map((article) => {
+			const val = article.likes;
+			console.log(val);
+
+			if (val > 0 && val > chosenOne) {
+				chosenThree = chosenTwo;
+				tempArr[2] = tempArr[1];
+				chosenTwo = chosenOne;
+				tempArr[1] = tempArr[0];
+				chosenOne = val;
+				tempArr[0] = article;
+			} else if (val < chosenOne && val > chosenThree) {
+				chosenThree = chosenTwo;
+				tempArr[2] = tempArr[1];
+				chosenTwo = val;
+				tempArr[1] = article;
+			} else if (val > chosenThree && val < chosenTwo) {
+				chosenThree = val;
+				tempArr[2] = article;
+			}
+		});
+
+		console.log(tempArr);
+	};
 
 	static findAll = () => {
 		// i dont think this temp = parsedData is needed, will remove and use parsedData instead if it works.
@@ -107,4 +142,5 @@ class Article {
 // article.likes++;
 // article.save();
 
+Article.featured();
 module.exports = Article;
