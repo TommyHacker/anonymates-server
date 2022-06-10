@@ -94,7 +94,7 @@ class Article {
 			}
 		});
 
-		console.log(tempArr);
+		return tempArr;
 	};
 
 	static findAll = () => {
