@@ -174,4 +174,23 @@ router.get('/featured/3', (req, res) => {
 	}
 });
 
+router.post('/gif', async (req, res) => {
+	try {
+		const api_url = req.body.data;
+		console.log(req.body);
+		let data;
+		const resp = await fetch(api_url)
+			.then((res) => res.json())
+			.then((response) => (data = response));
+		const gif1 = data.data[0].images.fixed_height.url;
+		const gif2 = data.data[1].images.fixed_height.url;
+		const gif3 = data.data[2].images.fixed_height.url;
+		const gif4 = data.data[3].images.fixed_height.url;
+		res.json({ data: [gif1, gif2, gif3, gif4] });
+	} catch (err) {
+		console.log(err);
+		res.json({ data: 'something went wrong.' });
+	}
+});
+
 module.exports = router;

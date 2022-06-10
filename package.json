@@ -6,7 +6,8 @@
 	"scripts": {
 		"test": "jest --watchAll --noStackTrace",
 		"start": "nodemon index.js",
-		"coverage": "jest --coverage"
+		"coverage": "jest --coverage",
+		"clear_jest": "jest --clearCache"
 	},
 	"repository": {
 		"type": "git",
