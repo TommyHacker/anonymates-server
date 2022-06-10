@@ -155,4 +155,21 @@ router.post('/:id/reaction', (req, res) => {
 	}
 });
 
+router.get('/featured', (req, res) => {
+	try {
+		const featured = Article.featured();
+		res.json({
+			status: 'success',
+			message: 'got featured articles',
+			data: featured,
+		});
+	} catch (err) {
+		console.log(err.message);
+		res.json({
+			status: 'failed',
+			message: 'something went wrong getting featured articles.',
+		});
+	}
+});
+
 module.exports = router;
